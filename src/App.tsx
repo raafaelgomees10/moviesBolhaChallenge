@@ -1,10 +1,10 @@
+import MoviesList from "./components/movieList";
 import "./styles.css";
-import MoviesList from "./MoviesList";
 
 export default function App() {
   return (
     <div className="App">
-      <MoviesList></MoviesList>
+      <MoviesList />
     </div>
   );
 }
