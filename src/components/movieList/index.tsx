@@ -10,16 +10,30 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 interface MovieListProps {
   title: string;
   movies: Movie[];
+  selectedGenres: number[];
 }
 
-export default function MoviesList({ title, movies }: MovieListProps) {
+export default function MoviesList({
+  title,
+  movies,
+  selectedGenres,
+}: MovieListProps) {
   const isHighlightOn = useSelector(
     (state: RootState) => state.toggle.isHighlightOn
   );
 
-  const sortedMovies = isHighlightOn
-    ? [...movies].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+  // Filtrando os filmes com base nos gêneros selecionados
+  const filteredMovies = selectedGenres.length
+    ? movies.filter((movie) =>
+        movie.genre_ids.some((id) => selectedGenres.includes(id))
+      )
     : movies;
+
+  const sortedMovies = isHighlightOn
+    ? [...filteredMovies].sort(
+        (a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
+      )
+    : filteredMovies;
 
   return (
     <S.Container>

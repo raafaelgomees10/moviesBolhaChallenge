@@ -1,11 +1,19 @@
-import { useState } from "react";
-import * as S from "./styles";
-import genres from "../../data/genres.json";
 import Icon from "../icons";
+import * as S from "./styles";
+import { useEffect, useState } from "react";
+import genres from "../../data/genres.json";
 
-const Filters = () => {
+interface FiltersProps {
+  onGenreChange: (selectedGenres: number[]) => void;
+}
+
+const Filters = ({ onGenreChange }: FiltersProps) => {
   const [isVisible, setVisible] = useState<boolean>(false);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
+
+  useEffect(() => {
+    onGenreChange(selectedGenres);
+  }, [selectedGenres, onGenreChange]);
 
   const handleSelectGenre = (id: number) => {
     if (selectedGenres.includes(id)) {
