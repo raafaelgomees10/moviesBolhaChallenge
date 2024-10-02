@@ -6,7 +6,8 @@ interface SpacerProps {
 
 export const Container = styled.header`
   align-items: center;
-  background: #2f3640;
+  background: ${(props) => props.theme.bg};
+  border-bottom: 1px solid rgba(255, 107, 0, 0.5);
   display: flex;
   left: 0;
   padding: 16px 32px;
@@ -24,8 +25,9 @@ export const Navigation = styled.nav`
   width: 100%;
 
   > p {
-    color: #fff;
-    font-size: 30px;
+    color: ${(props) => props.theme.colors.secondary};
+    font-family: ${(props) => props.theme.fonts.secondary};
+    font-size: 6rem;
     margin: 0;
   }
 `;

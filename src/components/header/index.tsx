@@ -34,7 +34,7 @@ const Header = () => {
     <>
       <S.Container ref={headerRef} className={isScrolled ? "scrolled" : ""}>
         <S.Navigation>
-          <p>MOOVIE</p>
+          <p>MOOVIE .</p>
           <S.Ul>
             <S.Li>
               <SearchBar />

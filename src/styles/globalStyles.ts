@@ -4,7 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 * {
 	box-sizing: border-box;
 	color: ${(props) => props.theme.colors.primary};
-	font-family: "Poppins", sans-serif;
+  font-family: ${(props) => props.theme.fonts.primary};
 	font-size: 62.5%;
 	list-style: none;
   text-decoration: none;

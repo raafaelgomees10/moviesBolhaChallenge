@@ -2,13 +2,14 @@ import * as S from "./styles";
 import MovieItem from "../movieItem";
 import { Movie } from "../../types/movie";
 import movies from "../../data/popular.json";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/sea-green";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+
 interface MovieListProps {
   title: string;
 }
 
-export default function MoviesList({ title = "Populares" }: MovieListProps) {
+export default function MoviesList({ title }: MovieListProps) {
   return (
     <S.Container>
       <S.Title>{title}</S.Title>

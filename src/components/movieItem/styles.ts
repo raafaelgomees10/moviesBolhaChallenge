@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.07);
+  }
+`;
 
 export const ImageBox = styled.div`
   position: relative;
@@ -8,23 +14,27 @@ export const ImageBox = styled.div`
 
 export const Image = styled.img`
   display: block;
+  border-radius: 8px;
 `;
 
 export const Highlight = styled.span`
+  background-color: ${(props) => props.theme.colors.secondary};
+  border-radius: 3px;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  font-weight: 500;
   color: #fff;
-  line-height: 1;
-  background-color: #e60b1c;
-  padding: 7px 10px;
-  white-space: nowrap;
   font-size: 1.6rem;
+  font-weight: 500;
+  left: 50%;
+  line-height: 1;
+  transform: translateX(-50%);
+  padding: 8px 10px;
   position: absolute;
+  white-space: nowrap;
+  z-index: 1;
 `;
 
 export const Title = styled.h3`
   font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 `;

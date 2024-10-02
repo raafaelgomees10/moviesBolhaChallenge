@@ -5,20 +5,29 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: 600;
   width: 100%;
-  display: flex;
+  /* display: flex; */
   align-items: center;
 
   &::after {
-    background-color: #fff;
+    display: block;
+    background-color: ${(props) => props.theme.colors.secondary};
+    margin-top: 8px;
+    content: "";
+    width: 70px;
+    height: 2px;
+  }
+
+  /* &::after {
+    background-color: ${(props) => props.theme.colors.secondary};
     margin-left: 12px;
     content: "";
     width: 100%;
     height: 1px;
     opacity: 0.3;
-  }
+  } */
 `;
 
 export const Content = styled.div`
@@ -28,7 +37,7 @@ export const Content = styled.div`
     }
 
     &__track {
-      padding: 32px 0;
+      padding: 32px 24px 32px 16px !important;
     }
 
     &__pagination {
@@ -44,29 +53,33 @@ export const Content = styled.div`
       top: 45%;
 
       &:hover:not(:disabled) svg {
-        /* fill: ${(props) => props.theme.colors.secondary}; */
+        fill: ${(props) => props.theme.colors.secondary};
         opacity: 0.8;
       }
 
       > svg {
-        /* fill: ${(props) => props.theme.colors.secondary}; */
+        fill: ${(props) => props.theme.colors.secondary};
         width: 35px;
         height: 35px;
 
         &:hover {
-          /* fill: ${(props) => props.theme.colors.secondary}; */
+          fill: ${(props) => props.theme.colors.secondary};
           opacity: 0.8;
-        }
-
-        &:focus-visible {
-          outline: 3px solid rgb(151, 118, 86) !important;
-          outline-offset: 3px;
         }
       }
 
       @media (max-width: 767px) {
         height: 40px;
         width: 40px;
+      }
+    }
+
+    &__pagination {
+      &__page {
+        &.is-active,
+        &:hover {
+          background-color: ${(props) => props.theme.colors.secondary};
+        }
       }
     }
   }
