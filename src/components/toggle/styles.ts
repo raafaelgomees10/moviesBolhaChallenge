@@ -25,23 +25,23 @@ export const Button = styled.label<ToggleProps>`
   border-radius: 100px;
   cursor: pointer;
   display: flex;
-  height: 28px;
+  height: 24px;
   justify-content: space-between;
   position: relative;
   transition: background-color 0.2s;
-  width: 60px;
+  width: 55px;
 `;
 
 export const Ball = styled.span`
   background: #fff;
   border-radius: 45px;
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
-  height: 24px;
+  height: 20px;
   left: 2px;
   position: absolute;
   transition: 0.2s;
   top: 2px;
-  width: 24px;
+  width: 20px;
 
   input:checked + label & {
     left: calc(100% - 2px);
@@ -49,6 +49,6 @@ export const Ball = styled.span`
   }
 
   label:active & {
-    width: 35px;
+    width: 29px;
   }
 `;

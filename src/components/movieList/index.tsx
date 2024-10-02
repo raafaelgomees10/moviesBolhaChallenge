@@ -1,20 +1,30 @@
+import Icon from "../icons";
 import * as S from "./styles";
 import MovieItem from "../movieItem";
 import { Movie } from "../../types/movie";
-import movies from "../../data/popular.json";
+import { useSelector } from "react-redux";
 import "@splidejs/react-splide/css/sea-green";
+import { RootState } from "../../store/configureStore";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import Icon from "../icons";
 
 interface MovieListProps {
   title: string;
+  movies: Movie[];
 }
 
-export default function MoviesList({ title }: MovieListProps) {
+export default function MoviesList({ title, movies }: MovieListProps) {
+  const isHighlightOn = useSelector(
+    (state: RootState) => state.toggle.isHighlightOn
+  );
+
+  const sortedMovies = isHighlightOn
+    ? [...movies].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+    : movies;
+
   return (
     <S.Container>
       <S.Header>
-        <Icon icon="highlights" height={30} width={30} />
+        {isHighlightOn && <Icon icon="highlights" height={30} width={30} />}
         <S.Title>{title}</S.Title>
       </S.Header>
       <S.Content>
@@ -28,7 +38,7 @@ export default function MoviesList({ title }: MovieListProps) {
             arrows: true,
           }}
         >
-          {movies.map((movie: Movie) => (
+          {sortedMovies.map((movie: Movie) => (
             <SplideSlide key={movie.id}>
               <MovieItem movie={movie} />
             </SplideSlide>

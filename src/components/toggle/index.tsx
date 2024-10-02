@@ -1,5 +1,7 @@
-import { useState } from "react";
 import * as S from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleHighlight } from "../../store/toggleSlice";
+import { RootState } from "../../store/configureStore";
 
 interface ToggleProps {
   colorOne: string;
@@ -7,9 +9,12 @@ interface ToggleProps {
 }
 
 const Toggle = ({ colorOne, colorTwo }: ToggleProps) => {
-  const [isOn, setIsOn] = useState(false);
+  const dispatch = useDispatch();
+  const isOn = useSelector((state: RootState) => state.toggle.isHighlightOn);
 
-  const handleToggle = () => setIsOn(!isOn);
+  const handleToggle = () => {
+    dispatch(toggleHighlight());
+  };
 
   return (
     <S.Container>
