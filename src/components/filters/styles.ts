@@ -5,23 +5,21 @@ interface FilterProps {
 }
 
 export const Container = styled.div`
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
-  /* border: 1px solid black; */
-  margin-bottom: 20px;
   border-radius: 6px;
+  margin: 16px 0;
 `;
 
 export const Label = styled.div<FilterProps>`
-  display: flex;
   align-items: center;
+  display: inline-flex;
   cursor: pointer;
-  padding: 10px;
   font-size: 1.8rem;
   transition: background-color 0.3s;
 
   > svg {
     margin-left: 16px;
     transition: transform 0.3s ease;
+
     ${(props) =>
       props.$isVisible &&
       css`
@@ -34,9 +32,9 @@ export const Box = styled.ul<FilterProps>`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   max-height: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
   opacity: 0;
   overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
   width: 100%;
 
   ${(props) =>
@@ -48,15 +46,15 @@ export const Box = styled.ul<FilterProps>`
 `;
 
 export const FilterItem = styled.div`
-  display: flex;
   align-items: center;
-  margin: 8px 0;
   color: #fff;
+  display: flex;
+  margin: 8px 0;
 `;
 
 export const Checkbox = styled.input`
-  margin-right: 10px;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 export const FilterLabel = styled.li`
