@@ -22,7 +22,6 @@ export default function MoviesList({
     (state: RootState) => state.toggle.isHighlightOn
   );
 
-  // Filtrando os filmes com base nos gêneros selecionados
   const filteredMovies = selectedGenres.length
     ? movies.filter((movie) =>
         movie.genre_ids.some((id) => selectedGenres.includes(id))
@@ -41,24 +40,37 @@ export default function MoviesList({
         {isHighlightOn && <Icon icon="highlights" height={30} width={30} />}
         <S.Title>{title}</S.Title>
       </S.Header>
-      <S.Content>
-        <Splide
-          aria-label="My Favorite Images"
-          options={{
-            width: 1200,
-            gap: 32,
-            perPage: 5,
-            perMove: 1,
-            arrows: true,
-          }}
-        >
+
+      {sortedMovies.length > 5 ? (
+        <S.SlideContent>
+          <Splide
+            aria-label="My Favorite Images"
+            options={{
+              width: 1200,
+              gap: 32,
+              perPage: 5,
+              perMove: 1,
+              arrows: true,
+            }}
+          >
+            {sortedMovies.map((movie: Movie) => (
+              <SplideSlide key={movie.id}>
+                <MovieItem movie={movie} />
+              </SplideSlide>
+            ))}
+          </Splide>
+        </S.SlideContent>
+      ) : sortedMovies.length > 0 ? (
+        <S.Content>
           {sortedMovies.map((movie: Movie) => (
-            <SplideSlide key={movie.id}>
-              <MovieItem movie={movie} />
-            </SplideSlide>
+            <MovieItem key={movie.id} movie={movie} />
           ))}
-        </Splide>
-      </S.Content>
+        </S.Content>
+      ) : (
+        <S.NoResults>
+          Sorry, we could not find any movies that matched your search.
+        </S.NoResults>
+      )}
     </S.Container>
   );
 }

@@ -13,7 +13,6 @@ export const Title = styled.div`
   font-size: 2.4rem;
   font-weight: 600;
   width: 100%;
-  /* display: flex; */
   align-items: center;
   margin-left: 8px;
 
@@ -25,18 +24,9 @@ export const Title = styled.div`
     width: 70px;
     height: 2px;
   }
-
-  /* &::after {
-    background-color: ${(props) => props.theme.colors.secondary};
-    margin-left: 12px;
-    content: "";
-    width: 100%;
-    height: 1px;
-    opacity: 0.3;
-  } */
 `;
 
-export const Content = styled.div`
+export const SlideContent = styled.div`
   .splide {
     &__slide {
       /* width: 220px !important; */
@@ -91,6 +81,12 @@ export const Content = styled.div`
   }
 `;
 
-export const Container3 = styled.div``;
+export const Content = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 32px 24px 32px 16px;
+`;
 
-export const Container4 = styled.div``;
+export const NoResults = styled.p`
+  font-size: 1.6rem;
+`;

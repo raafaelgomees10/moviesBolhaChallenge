@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import Icon from "../icons";
 import * as S from "./styles";
 import SearchBar from "../search";
+interface HeaderProps {
+  onSearchChange: (text: string) => void; // Tipagem do callback
+}
 
-const Header = () => {
+const Header = ({ onSearchChange }: HeaderProps) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -37,7 +40,7 @@ const Header = () => {
           <p>MOOVIE .</p>
           <S.Ul>
             <S.Li>
-              <SearchBar />
+              <SearchBar onSearchChange={onSearchChange} />
             </S.Li>
             <S.Li>
               <S.Link href="#">

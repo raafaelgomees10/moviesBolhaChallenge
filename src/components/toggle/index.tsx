@@ -18,7 +18,7 @@ const Toggle = ({ colorOne, colorTwo }: ToggleProps) => {
 
   return (
     <S.Container>
-      <S.Label>Destaques</S.Label>
+      <S.Label>Highlights</S.Label>
       <S.Checkbox
         checked={isOn}
         id="toggle"
