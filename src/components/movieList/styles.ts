@@ -4,12 +4,18 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Title = styled.div`
   font-size: 2.4rem;
   font-weight: 600;
   width: 100%;
   /* display: flex; */
   align-items: center;
+  margin-left: 8px;
 
   &::after {
     display: block;

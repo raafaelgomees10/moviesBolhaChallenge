@@ -4,6 +4,7 @@ import { Movie } from "../../types/movie";
 import movies from "../../data/popular.json";
 import "@splidejs/react-splide/css/sea-green";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import Icon from "../icons";
 
 interface MovieListProps {
   title: string;
@@ -12,7 +13,10 @@ interface MovieListProps {
 export default function MoviesList({ title }: MovieListProps) {
   return (
     <S.Container>
-      <S.Title>{title}</S.Title>
+      <S.Header>
+        <Icon icon="highlights" height={30} width={30} />
+        <S.Title>{title}</S.Title>
+      </S.Header>
       <S.Content>
         <Splide
           aria-label="My Favorite Images"
