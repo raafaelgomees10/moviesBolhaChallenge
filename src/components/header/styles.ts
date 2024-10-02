@@ -4,18 +4,19 @@ interface SpacerProps {
   $height: number;
 }
 
-export const Navigation = styled.nav`
+export const Container = styled.header`
   align-items: center;
-  background-color: rebeccapurple;
+  background: #2f3640;
   display: flex;
   left: 0;
   padding: 16px 32px;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 999;
 `;
 
-export const Content = styled.div`
+export const Navigation = styled.nav`
   align-items: center;
   display: flex;
   justify-content: space-between;

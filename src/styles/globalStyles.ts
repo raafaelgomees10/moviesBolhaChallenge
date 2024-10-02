@@ -35,40 +35,11 @@ html, body{
   }
 }
 
-.movies-list {
+.movies-listSearched {
   display: grid;
   gap: 15px;
   grid-template-columns: repeat(4, 1fr);
   padding: 15px;
-}
-
-.movie-item {
-}
-
-.movie-item-header {
-}
-
-.movie-item__poster {
-  display: block;
-}
-
-.movie-item__title {
-  font-size: 1.3em;
-  margin: 0;
-  margin-top: 10px;
-}
-
-.movie-item__badge {
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1;
-  background-color: #e60b1c;
-  padding: 7px 10px;
-  white-space: nowrap;
 }
 
 .toggleTheme{

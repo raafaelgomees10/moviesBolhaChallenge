@@ -32,8 +32,8 @@ const Header = () => {
   const mobile = false;
   return (
     <>
-      <S.Navigation ref={headerRef} className={isScrolled ? "scrolled" : ""}>
-        <S.Content>
+      <S.Container ref={headerRef} className={isScrolled ? "scrolled" : ""}>
+        <S.Navigation>
           <p>MOOVIE</p>
           <S.Ul>
             <S.Li>
@@ -56,8 +56,8 @@ const Header = () => {
               <Icon icon="profile" width={24} height={24} />
             </S.Li>
           </S.Ul>
-        </S.Content>
-      </S.Navigation>
+        </S.Navigation>
+      </S.Container>
       <S.Spacer $height={!mobile ? headerHeight : 40} />
     </>
   );
