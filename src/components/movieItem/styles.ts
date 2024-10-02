@@ -13,6 +13,7 @@ export const ImageBox = styled.div`
 `;
 
 export const Image = styled.img`
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
   display: block;
   border-radius: 8px;
 `;

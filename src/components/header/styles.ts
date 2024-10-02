@@ -8,6 +8,7 @@ export const Container = styled.header`
   align-items: center;
   background: ${(props) => props.theme.bg};
   border-bottom: 1px solid rgba(255, 107, 0, 0.5);
+  box-shadow: 0 2px 5px rgba(255, 107, 0, 0.3);
   display: flex;
   left: 0;
   padding: 16px 32px;

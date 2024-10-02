@@ -20,6 +20,9 @@ html, body{
   transition: all 0.25s linear;
 }
 
+ul{
+  padding: 0;
+}
 
 .mainContainer {
   margin: 0 auto;

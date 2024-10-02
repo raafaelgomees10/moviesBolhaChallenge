@@ -1,3 +1,4 @@
+import Arrow from "./components/arrow";
 import Search from "./components/search";
 import Profile from "./components/profile";
 import Highlights from "./components/highlights";
@@ -22,6 +23,9 @@ const Icon = ({ icon, height, width }: IconProps) => {
 
     case "highlights":
       return <Highlights height={height} width={width} />;
+
+    case "arrow":
+      return <Arrow height={height} width={width} />;
     default:
       return null;
   }
