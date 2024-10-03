@@ -1,7 +1,6 @@
 export const lightTheme = {
   bg: "#fff9e9",
   header: "#ffeec2",
-  toggle: "#cdc9c9",
   colors: {
     primary: "#000",
     secondary: "#FF6B00",
@@ -15,7 +14,6 @@ export const lightTheme = {
 export const darkTheme = {
   bg: "#2f3640",
   header: "#131518",
-  toggle: "#cdc9c9",
   colors: {
     primary: "#FCFCFC",
     secondary: "#FF6B00",

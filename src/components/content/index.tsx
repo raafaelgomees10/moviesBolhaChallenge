@@ -32,7 +32,7 @@ const Content = () => {
       <Header onSearchChange={handleSearchChange} />
 
       <div className="mainContent">
-        <Toggle colorOne="#FF6B00" colorTwo="#868686" />
+        <Toggle colorOne="#FF6B00" colorTwo="#a3a3a3" />
         <Filters onGenreChange={handleGenreChange} />
         <div>
           <MoviesList

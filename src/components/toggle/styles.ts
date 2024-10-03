@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 interface ToggleProps {
-  isOn: boolean;
-  colorOne: string;
-  colorTwo: string;
+  $isOn: boolean;
+  $colorOne: string;
+  $colorTwo: string;
 }
 
 export const Container = styled.div``;
@@ -21,7 +21,7 @@ export const Checkbox = styled.input`
 
 export const Button = styled.label<ToggleProps>`
   align-items: center;
-  background: ${(props) => (props.isOn ? props.colorOne : props.colorTwo)};
+  background: ${(props) => (props.$isOn ? props.$colorOne : props.$colorTwo)};
   border-radius: 100px;
   cursor: pointer;
   display: flex;

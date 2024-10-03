@@ -26,10 +26,10 @@ const Toggle = ({ colorOne, colorTwo }: ToggleProps) => {
         onChange={handleToggle}
       />
       <S.Button
-        isOn={isOn}
+        $isOn={isOn}
         htmlFor="toggle"
-        colorOne={colorOne}
-        colorTwo={colorTwo}
+        $colorOne={colorOne}
+        $colorTwo={colorTwo}
       >
         <S.Ball />
       </S.Button>
