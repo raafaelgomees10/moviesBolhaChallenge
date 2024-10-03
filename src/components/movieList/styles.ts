@@ -81,7 +81,7 @@ export const SlideContent = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 32px 24px 32px 16px;

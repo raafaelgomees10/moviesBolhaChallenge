@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { Movie } from "./types/movie";
 import Header from "./components/header";
 import Toggle from "./components/toggle";
-import Filters from "./components/filters";
-import MoviesList from "./components/movieList";
-import { Movie } from "./types/movie"; // Certifique-se de que o caminho esteja correto
 import movies from "./data/popular.json";
-import nowPlaying from "./data/now-playing.json";
-import topRated from "./data/top-rated.json";
+import Filters from "./components/filters";
 import upcoming from "./data/upcoming.json";
+import topRated from "./data/top-rated.json";
+import MoviesList from "./components/movieList";
+import nowPlaying from "./data/now-playing.json";
 
 export default function App() {
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);

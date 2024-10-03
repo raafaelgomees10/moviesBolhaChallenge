@@ -1,8 +1,10 @@
 import Icon from "../icons";
 import * as S from "./styles";
+import { useState } from "react";
 import MovieItem from "../movieItem";
 import { Movie } from "../../types/movie";
 import { useSelector } from "react-redux";
+import ModalDetails from "../modalDetails";
 import "@splidejs/react-splide/css/sea-green";
 import { RootState } from "../../store/configureStore";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -11,6 +13,7 @@ interface MovieListProps {
   title: string;
   movies: Movie[];
   selectedGenres: number[];
+  onClick?: (movie: Movie) => void;
 }
 
 export default function MoviesList({
@@ -18,6 +21,9 @@ export default function MoviesList({
   movies,
   selectedGenres,
 }: MovieListProps) {
+  const [modalDetails, setModalDetails] = useState<boolean>(false);
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+
   const isHighlightOn = useSelector(
     (state: RootState) => state.toggle.isHighlightOn
   );
@@ -33,6 +39,11 @@ export default function MoviesList({
         (a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
       )
     : filteredMovies;
+
+  const handleClick = (movie: Movie) => {
+    setSelectedMovie(movie);
+    setModalDetails(true);
+  };
 
   return (
     <S.Container>
@@ -54,7 +65,7 @@ export default function MoviesList({
             }}
           >
             {sortedMovies.map((movie: Movie) => (
-              <SplideSlide key={movie.id}>
+              <SplideSlide key={movie.id} onClick={() => handleClick(movie)}>
                 <MovieItem movie={movie} />
               </SplideSlide>
             ))}
@@ -63,13 +74,21 @@ export default function MoviesList({
       ) : sortedMovies.length > 0 ? (
         <S.Content>
           {sortedMovies.map((movie: Movie) => (
-            <MovieItem key={movie.id} movie={movie} />
+            <>
+              <li onClick={() => handleClick(movie)}>
+                <MovieItem key={movie.id} movie={movie} />
+              </li>
+            </>
           ))}
         </S.Content>
       ) : (
         <S.NoResults>
           Sorry, we could not find any movies that matched your search.
         </S.NoResults>
+      )}
+
+      {modalDetails && (
+        <ModalDetails movie={selectedMovie} setModalDetails={setModalDetails} />
       )}
     </S.Container>
   );
