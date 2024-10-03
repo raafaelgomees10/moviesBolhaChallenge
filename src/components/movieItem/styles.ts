@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.4s all ease-in-out;
+
   &:hover {
     transform: scale(1.07);
   }

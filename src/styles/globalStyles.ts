@@ -51,35 +51,4 @@ ul, li, p, h1, h2,h3{
   border: none;
 }
 
-@keyframes animeLeft {
-  0%{
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-    100%{
-        opacity: 1;
-        transform: initial;
-    }
-}
-@keyframes animeUp {
-
-0% {
-  opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fadeUp{
-  animation: animeUp 1s ease forwards;
-  animation-delay: .5s;
-  animation-duration: 1s;
-  opacity: 0;
-}
-.fadeLeft{
-  animation: animeLeft .4s ease forwards;
-}
 `;

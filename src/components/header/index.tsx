@@ -1,4 +1,3 @@
-// Header.tsx
 import React, { useState } from "react";
 import * as S from "./styles";
 import SearchBar from "../search";
@@ -19,18 +18,24 @@ const Header = ({ onSearchChange }: HeaderProps) => {
   const mobile = useMedia("(max-width:767px)");
 
   return (
-    <S.Container>
+    <S.Container className={menuOpen ? "menuActive" : ""}>
       <S.Content className="mainContainer">
         <S.Navbar>
           <S.Logo>Moovie .</S.Logo>
 
-          <S.MainMenu className={menuOpen ? "show" : ""}>
+          <S.MainMenu className={menuOpen ? "menuActive" : ""}>
             <S.ListItem>
               <SearchBar onSearchChange={onSearchChange} />
             </S.ListItem>
-            <S.ListItem>Home</S.ListItem>
-            <S.ListItem>Blog</S.ListItem>
-            <S.ListItem>Highlights</S.ListItem>
+            <S.ListItem>
+              <span>Home</span>
+            </S.ListItem>
+            <S.ListItem>
+              <span>Blog</span>
+            </S.ListItem>
+            <S.ListItem>
+              <span>Highlights</span>
+            </S.ListItem>
             {!mobile && (
               <>
                 <S.ListItem>

@@ -1,4 +1,3 @@
-// styles.ts
 import styled, { css } from "styled-components";
 
 interface HamburgerIconProps {
@@ -7,9 +6,9 @@ interface HamburgerIconProps {
 
 export const Container = styled.div`
   align-items: center;
-  background: ${(props) => props.theme.bg};
+  background: #131518;
   border-bottom: 1px solid rgba(255, 107, 0, 0.5);
-  box-shadow: 0 2px 5px rgba(255, 107, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(255, 107, 0, 0.4);
   display: flex;
   left: 0;
   padding: 16px 32px;
@@ -17,6 +16,11 @@ export const Container = styled.div`
   top: 0;
   width: 100%;
   z-index: 999;
+
+  &.menuActive {
+    border-bottom: 1px solid #131518;
+    box-shadow: unset;
+  }
 `;
 
 export const Content = styled.div`
@@ -29,13 +33,41 @@ export const Content = styled.div`
 
 export const ListItem = styled.li`
   align-self: center;
-  cursor: pointer;
-  font-size: 1.6rem;
   margin: 0;
   padding: 0 12px;
 
   @media (max-width: 767px) {
     padding: 12px 0;
+  }
+
+  > svg {
+    cursor: pointer;
+    transition: fill 0.2s;
+
+    &:hover {
+      fill: ${(props) => props.theme.colors.secondary};
+    }
+  }
+
+  > span {
+    font-size: 1.6rem;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      width: 0%;
+      height: 2px;
+      background-color: ${(props) => props.theme.colors.secondary};
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      transition: width 0.5s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 `;
 
@@ -54,21 +86,28 @@ export const Logo = styled.div`
 export const MainMenu = styled.ul`
   display: flex;
 
-  &.show {
+  &.menuActive {
     display: flex;
   }
 
   @media (max-width: 767px) {
     align-items: center;
-    background: ${(props) => props.theme.bg};
+    background: #131518;
     border-bottom: 1px solid rgba(255, 107, 0, 0.5);
     box-shadow: 0 2px 5px rgba(255, 107, 0, 0.3);
-    display: none;
     flex-direction: column;
     left: 0;
+    opacity: 0;
     position: absolute;
     top: 93px;
+    transform: translateY(-30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     width: 100%;
+
+    &.menuActive {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 

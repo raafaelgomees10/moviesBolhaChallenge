@@ -28,7 +28,7 @@ const SearchBar = ({ onSearchChange }: SearchBarProps) => {
 
   return (
     <S.SearchBox onClick={handleExpand} $isExpanded={isExpanded}>
-      <S.SearchButton>
+      <S.SearchButton $isExpanded={isExpanded}>
         <Icon icon="search" width={24} height={24} />
       </S.SearchButton>
       <S.SearchInput
