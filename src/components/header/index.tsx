@@ -1,68 +1,77 @@
-import { useEffect, useRef, useState } from "react";
-import Icon from "../icons";
+// Header.tsx
+import React, { useState } from "react";
 import * as S from "./styles";
 import SearchBar from "../search";
+import Icon from "../icons";
+import useMedia from "../../hooks/useMedia";
+
 interface HeaderProps {
-  onSearchChange: (text: string) => void; // Tipagem do callback
+  onSearchChange: (text: string) => void;
 }
 
 const Header = ({ onSearchChange }: HeaderProps) => {
-  const headerRef = useRef<HTMLDivElement | null>(null);
-  const [headerHeight, setHeaderHeight] = useState<number>(0);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 150);
-    };
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
-    };
+  const mobile = useMedia("(max-width:767px)");
 
-    window.addEventListener("scroll", handleScroll);
-    updateHeaderHeight();
-    window.addEventListener("resize", updateHeaderHeight);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", updateHeaderHeight);
-    };
-  }, []);
-
-  const mobile = false;
   return (
-    <>
-      <S.Container ref={headerRef} className={isScrolled ? "scrolled" : ""}>
-        <S.Navigation>
-          <p>MOOVIE .</p>
-          <S.Ul>
-            <S.Li>
+    <S.Container>
+      <S.Content className="mainContainer">
+        <S.Navbar>
+          <S.Logo>Moovie .</S.Logo>
+
+          <S.MainMenu className={menuOpen ? "show" : ""}>
+            <S.ListItem>
               <SearchBar onSearchChange={onSearchChange} />
-            </S.Li>
-            <S.Li>
-              <S.Link href="#">
-                <S.Title>Home</S.Title>
-              </S.Link>
-            </S.Li>
-            <S.Li>
-              <S.Link href="#">
-                <S.Title>Highlights</S.Title>
-              </S.Link>
-            </S.Li>
-            <S.Li>
-              <Icon icon="notification" width={26} height={26} />
-            </S.Li>
-            <S.Li>
-              <Icon icon="profile" width={24} height={24} />
-            </S.Li>
-          </S.Ul>
-        </S.Navigation>
-      </S.Container>
-      <S.Spacer $height={!mobile ? headerHeight : 40} />
-    </>
+            </S.ListItem>
+            <S.ListItem>Home</S.ListItem>
+            <S.ListItem>Blog</S.ListItem>
+            <S.ListItem>Highlights</S.ListItem>
+            {!mobile && (
+              <>
+                <S.ListItem>
+                  <Icon
+                    icon="notification"
+                    width={mobile ? 20 : 26}
+                    height={mobile ? 20 : 26}
+                  />
+                </S.ListItem>
+                <S.ListItem>
+                  <Icon
+                    icon="profile"
+                    width={mobile ? 18 : 24}
+                    height={mobile ? 18 : 24}
+                  />
+                </S.ListItem>
+              </>
+            )}
+          </S.MainMenu>
+        </S.Navbar>
+        {mobile && (
+          <S.MobileWrapper>
+            <Icon
+              icon="notification"
+              width={mobile ? 20 : 26}
+              height={mobile ? 20 : 26}
+            />
+            <Icon
+              icon="profile"
+              width={mobile ? 18 : 24}
+              height={mobile ? 18 : 24}
+            />
+            <S.MenuBtn onClick={toggleMenu} isOpen={menuOpen}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </S.MenuBtn>
+          </S.MobileWrapper>
+        )}
+      </S.Content>
+    </S.Container>
   );
 };
 

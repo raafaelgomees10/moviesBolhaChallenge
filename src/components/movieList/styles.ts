@@ -24,6 +24,17 @@ export const Title = styled.div`
     width: 70px;
     height: 2px;
   }
+
+  @media (max-width: 767px) {
+    font-size: 2rem;
+
+    &::after {
+      content: "";
+      height: 2px;
+      margin-top: 4px;
+      width: 55px;
+    }
+  }
 `;
 
 export const SlideContent = styled.div`
@@ -65,8 +76,8 @@ export const SlideContent = styled.div`
       }
 
       @media (max-width: 767px) {
-        height: 40px;
-        width: 40px;
+        height: 25px;
+        width: 25px;
       }
     }
 
@@ -85,8 +96,16 @@ export const Content = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 32px 24px 32px 16px;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const NoResults = styled.p`
   font-size: 1.6rem;
+
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+  }
 `;

@@ -16,6 +16,13 @@ export const Image = styled.img`
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
   display: block;
   border-radius: 8px;
+  height: 330px;
+  width: 220px;
+
+  @media (max-width: 767px) {
+    height: 230px;
+    width: 150px;
+  }
 `;
 
 export const Highlight = styled.span`
@@ -35,7 +42,11 @@ export const Highlight = styled.span`
 `;
 
 export const Title = styled.h3`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 300;
   letter-spacing: 0.5px;
+
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
+  }
 `;

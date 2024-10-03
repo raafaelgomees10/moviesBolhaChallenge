@@ -26,6 +26,14 @@ export const Label = styled.div<FilterProps>`
         transform: rotate(90deg);
       `}
   }
+
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+    letter-spacing: 0.6px;
+    > svg {
+      margin-left: 8px;
+    }
+  }
 `;
 
 export const Box = styled.ul<FilterProps>`
@@ -43,6 +51,17 @@ export const Box = styled.ul<FilterProps>`
       max-height: 250px;
       opacity: 1;
     `}
+
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    ${(props) =>
+      props.$isVisible &&
+      css`
+        max-height: 350px;
+      `}
+  }
 `;
 
 export const FilterItem = styled.div`
@@ -55,10 +74,18 @@ export const FilterItem = styled.div`
 export const Checkbox = styled.input`
   cursor: pointer;
   margin-right: 10px;
+
+  @media (max-width: 767px) {
+    margin-right: 8px;
+  }
 `;
 
 export const FilterLabel = styled.li`
   cursor: pointer;
   font-size: 1.6rem;
   transition: background-color 0.3s;
+
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+  }
 `;

@@ -2,6 +2,7 @@ import Icon from "../icons";
 import * as S from "./styles";
 import { useEffect, useState } from "react";
 import genres from "../../data/genres.json";
+import useMedia from "../../hooks/useMedia";
 
 interface FiltersProps {
   onGenreChange: (selectedGenres: number[]) => void;
@@ -23,10 +24,13 @@ const Filters = ({ onGenreChange }: FiltersProps) => {
     }
   };
 
+  const mobile = useMedia("(max-width:767px)");
+
   return (
     <S.Container>
       <S.Label onClick={() => setVisible(!isVisible)} $isVisible={isVisible}>
-        Filters <Icon icon="arrow" width={14} height={14} />
+        Filters
+        <Icon icon="arrow" width={mobile ? 11 : 14} height={mobile ? 11 : 14} />
       </S.Label>
       <S.Box $isVisible={isVisible}>
         {genres.map((genre) => (

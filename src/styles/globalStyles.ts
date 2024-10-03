@@ -12,12 +12,8 @@ export const GlobalStyles = createGlobalStyle`
 
 html, body{
   background: ${(props) => props.theme.bg};
-  display:  flex;
-  flex-direction: column;
-  height: 100%;
   margin: 0;
   padding:0;
-  transition: all 0.25s linear;
 }
 
 ul, li, p, h1, h2,h3{
@@ -37,6 +33,10 @@ ul, li, p, h1, h2,h3{
   @media (min-width: 768px) and (max-width: 1199px) {
     max-width: 735px;
   }
+}
+
+.mainContent{
+  padding-top: 110px;
 }
 
 .movies-listSearched {

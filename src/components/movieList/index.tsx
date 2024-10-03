@@ -55,13 +55,21 @@ export default function MoviesList({
       {sortedMovies.length > 5 ? (
         <S.SlideContent>
           <Splide
-            aria-label="My Favorite Images"
+            aria-label="Favorite Movies"
             options={{
               width: 1200,
               gap: 32,
               perPage: 5,
               perMove: 1,
               arrows: true,
+              breakpoints: {
+                767: {
+                  perPage: 2,
+                },
+                1199: {
+                  perPage: 3,
+                },
+              },
             }}
           >
             {sortedMovies.map((movie: Movie) => (

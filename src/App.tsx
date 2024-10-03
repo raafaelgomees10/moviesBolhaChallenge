@@ -30,29 +30,32 @@ export default function App() {
   return (
     <div className="mainContainer">
       <Header onSearchChange={handleSearchChange} />
-      <Toggle colorOne="#FF6B00" colorTwo="#868686" />
-      <Filters onGenreChange={handleGenreChange} />
-      <div>
-        <MoviesList
-          title="Popular"
-          movies={filterMovies(movies as Movie[])}
-          selectedGenres={selectedGenres}
-        />
-        <MoviesList
-          title="Keep watching"
-          movies={filterMovies(nowPlaying) as Movie[]}
-          selectedGenres={selectedGenres}
-        />
-        <MoviesList
-          title="Top Rated"
-          movies={filterMovies(topRated) as Movie[]}
-          selectedGenres={selectedGenres}
-        />
-        <MoviesList
-          title="Coming Soon"
-          movies={filterMovies(upcoming) as Movie[]}
-          selectedGenres={selectedGenres}
-        />
+
+      <div className="mainContent">
+        <Toggle colorOne="#FF6B00" colorTwo="#868686" />
+        <Filters onGenreChange={handleGenreChange} />
+        <div>
+          <MoviesList
+            title="Popular"
+            movies={filterMovies(movies as Movie[])}
+            selectedGenres={selectedGenres}
+          />
+          <MoviesList
+            title="Keep watching"
+            movies={filterMovies(nowPlaying) as Movie[]}
+            selectedGenres={selectedGenres}
+          />
+          <MoviesList
+            title="Top Rated"
+            movies={filterMovies(topRated) as Movie[]}
+            selectedGenres={selectedGenres}
+          />
+          <MoviesList
+            title="Coming Soon"
+            movies={filterMovies(upcoming) as Movie[]}
+            selectedGenres={selectedGenres}
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,10 +1,11 @@
-import styled from "styled-components";
+// styles.ts
+import styled, { css } from "styled-components";
 
-interface SpacerProps {
-  $height: number;
+interface HamburgerIconProps {
+  isOpen: boolean;
 }
 
-export const Container = styled.header`
+export const Container = styled.div`
   align-items: center;
   background: ${(props) => props.theme.bg};
   border-bottom: 1px solid rgba(255, 107, 0, 0.5);
@@ -18,51 +19,104 @@ export const Container = styled.header`
   z-index: 999;
 `;
 
-export const Navigation = styled.nav`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  max-width: 1300px;
-  width: 100%;
-
-  > p {
-    color: ${(props) => props.theme.colors.secondary};
-    font-family: ${(props) => props.theme.fonts.secondary};
-    font-size: 6rem;
-    margin: 0;
+export const Content = styled.div`
+  @media (max-width: 767px) {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
   }
 `;
 
-export const Ul = styled.ul`
+export const ListItem = styled.li`
+  align-self: center;
+  cursor: pointer;
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0 12px;
+
+  @media (max-width: 767px) {
+    padding: 12px 0;
+  }
+`;
+
+export const Logo = styled.div`
+  color: ${(props) => props.theme.colors.secondary};
+  cursor: pointer;
+  font-family: ${(props) => props.theme.fonts.secondary};
+  font-size: 6rem;
+  margin: 0;
+
+  @media (max-width: 767px) {
+    font-size: 4rem;
+  }
+`;
+
+export const MainMenu = styled.ul`
+  display: flex;
+
+  &.show {
+    display: flex;
+  }
+
+  @media (max-width: 767px) {
+    align-items: center;
+    background: ${(props) => props.theme.bg};
+    border-bottom: 1px solid rgba(255, 107, 0, 0.5);
+    box-shadow: 0 2px 5px rgba(255, 107, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    left: 0;
+    position: absolute;
+    top: 93px;
+    width: 100%;
+  }
+`;
+
+export const MenuBtn = styled.div<HamburgerIconProps>`
+  display: none;
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    span {
+      background: white;
+      display: block;
+      height: 2px;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+      width: 25px;
+    }
+
+    ${(props) =>
+      props.isOpen &&
+      css`
+        span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+        }
+        span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      `}
+  }
+`;
+
+export const Navbar = styled.nav`
   align-items: center;
   display: flex;
-  gap: 32px;
-  justify-content: center;
+  justify-content: space-between;
+  height: 60px;
 `;
 
-export const Li = styled.li`
-  cursor: pointer;
-  width: 100%;
-  transition: 1s;
-`;
+export const MobileWrapper = styled.div`
+  align-items: center;
+  display: flex;
 
-export const Link = styled.a`
-  display: block;
-  position: relative;
-  text-decoration: none;
-  width: 100%;
-`;
-
-export const Title = styled.span`
-  color: #fff;
-  display: block;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  line-height: 60px;
-  position: relative;
-`;
-
-export const Spacer = styled.div<SpacerProps>`
-  height: ${(props) => props.$height}px;
+  > svg {
+    margin-right: 16px;
+  }
 `;
