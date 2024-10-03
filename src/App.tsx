@@ -6,6 +6,8 @@ import { setInitialTheme } from "./store/themeSlice";
 import { GlobalStyles } from "./styles/globalStyles";
 import { darkTheme, lightTheme } from "./styles/theme";
 import { useDispatch, useSelector } from "react-redux";
+import Loading from "./components/loading/loading";
+import Footer from "./components/footer";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -18,7 +20,9 @@ export default function App() {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyles />
+      <Loading />
       <Content />
+      <Footer />
     </ThemeProvider>
   );
 }
