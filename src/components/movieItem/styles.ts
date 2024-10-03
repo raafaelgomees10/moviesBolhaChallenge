@@ -44,6 +44,12 @@ export const Highlight = styled.span`
   position: absolute;
   white-space: nowrap;
   z-index: 1;
+
+  @media (max-width: 767px) {
+    font-size: 1.4rem;
+    padding: 6px 8px;
+    left: 55%;
+  }
 `;
 
 export const Title = styled.h3`

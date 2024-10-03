@@ -1,3 +1,4 @@
+import Close from "./components/close";
 import Arrow from "./components/arrow";
 import Search from "./components/search";
 import Profile from "./components/profile";
@@ -26,6 +27,9 @@ const Icon = ({ icon, height, width }: IconProps) => {
 
     case "arrow":
       return <Arrow height={height} width={width} />;
+
+    case "close":
+      return <Close height={height} width={width} />;
     default:
       return null;
   }

@@ -1,6 +1,8 @@
 import { Movie } from "../../types/movie";
 import * as S from "./styles";
 import genres from "../../data/genres.json";
+import { useEffect } from "react";
+import Icon from "../icons";
 
 interface ModalDetailsProps {
   setModalDetails: (isOpen: boolean) => void;
@@ -10,6 +12,19 @@ interface ModalDetailsProps {
 const assetsUrl = "https://www.themoviedb.org/t/p/w220_and_h330_face/";
 
 const ModalDetails = ({ setModalDetails, movie }: ModalDetailsProps) => {
+  useEffect(() => {
+    const escFunction = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setModalDetails(false);
+      }
+    };
+
+    document.addEventListener("keydown", escFunction, false);
+
+    return () => {
+      window.removeEventListener("keydown", escFunction);
+    };
+  }, [setModalDetails]);
   const handleClose = () => {
     setModalDetails(false);
   };
@@ -33,6 +48,9 @@ const ModalDetails = ({ setModalDetails, movie }: ModalDetailsProps) => {
       <S.Container id="modalContainer">
         <S.Modal className="modal">
           <S.Content>
+            <S.Close onClick={handleClose}>
+              <Icon icon="close" width={20} height={20} />
+            </S.Close>
             <S.Img
               width={300}
               height={250}
@@ -75,9 +93,6 @@ const ModalDetails = ({ setModalDetails, movie }: ModalDetailsProps) => {
                   </S.Group>
                 </S.InlineGroup>
               </div>
-              <S.ButtonWrapper>
-                <S.Button onClick={handleClose}>Close</S.Button>
-              </S.ButtonWrapper>
             </S.Details>
           </S.Content>
         </S.Modal>

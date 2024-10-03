@@ -12,7 +12,6 @@ export const lightTheme = {
 
 export const darkTheme = {
   bg: "#2f3640",
-
   colors: {
     primary: "#FCFCFC",
     secondary: "#FF6B00",

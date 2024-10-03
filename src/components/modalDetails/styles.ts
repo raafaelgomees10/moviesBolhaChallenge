@@ -46,7 +46,6 @@ export const Container = styled.div`
 export const Modal = styled.div`
   background-color: ${(props) => props.theme.colors.bg};
   border-radius: 16px;
-  box-shadow: ${(props) => props.theme.shadow};
   max-width: 90%;
   overflow: hidden;
   position: relative;
@@ -63,6 +62,7 @@ export const Content = styled.div`
   background-color: ${(props) => props.theme.bg};
   display: flex;
   max-width: 750px;
+  position: relative;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -77,9 +77,10 @@ export const Img = styled.img`
   object-fit: cover;
 
   @media (max-width: 768px) {
-    align-self: center;
-    max-height: 45vh;
+    height: 250px;
+    width: 100%;
     max-width: 100%;
+    object-fit: contain;
   }
 `;
 
@@ -91,7 +92,7 @@ export const Details = styled.div`
   padding: 0 20px;
 
   @media (max-width: 768px) {
-    padding: 12px 0 0;
+    padding: 0 12px;
   }
 `;
 
@@ -100,6 +101,11 @@ export const MovieTitle = styled.h2`
   line-height: 1.4;
   margin: 16px 0;
   text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 1.6rem;
+    margin: 8px 0;
+  }
 `;
 
 export const Group = styled.div`
@@ -120,49 +126,44 @@ export const InlineGroup = styled.div`
 export const Item = styled.span`
   font-size: 1.4rem;
   font-weight: 600;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.6px;
+
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Text = styled.p`
   font-size: 1.4rem;
   margin-left: 8px;
   max-width: 220px;
+  letter-spacing: 0.4px;
 
   &.overview {
     max-width: unset;
     margin-left: 0;
   }
-`;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 16px;
-
-  @media (max-width: 768px) {
-    padding-top: 24px;
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
   }
 `;
 
-export const Button = styled.button`
-  align-items: center;
+export const Close = styled.div`
   background: linear-gradient(
     315deg,
     rgb(255, 122, 0) 0%,
     rgb(255, 197, 49) 100%
   );
-  border: none;
-  border-radius: 16px;
-  color: #fff;
-  cursor: pointer;
+  font-size: 30px;
   display: flex;
-  font-size: 1.4rem;
   justify-content: center;
-  padding: 6px 12px;
-  transition: opacity 0.2s linear;
-  width: 100px;
-
-  &:hover {
-    opacity: 0.8;
-  }
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  right: 0;
+  top: 0;
+  position: absolute;
+  cursor: pointer;
+  border-bottom-left-radius: 5px;
 `;
