@@ -5,6 +5,7 @@ import MovieItem from "../movieItem";
 import { Movie } from "../../types/movie";
 import { useSelector } from "react-redux";
 import ModalDetails from "../modalDetails";
+import useMedia from "../../hooks/useMedia";
 import "@splidejs/react-splide/css/sea-green";
 import { RootState } from "../../store/configureStore";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -45,6 +46,14 @@ export default function MoviesList({
     setModalDetails(true);
   };
 
+  const mobile = useMedia("(max-width:767px)");
+  const tablet = useMedia("(max-width:1199px)");
+
+  const sliderConditions =
+    sortedMovies.length > 5 ||
+    (mobile && sortedMovies.length > 2) ||
+    (tablet && sortedMovies.length > 3);
+
   return (
     <S.Container>
       <S.Header>
@@ -52,7 +61,7 @@ export default function MoviesList({
         <S.Title>{title}</S.Title>
       </S.Header>
 
-      {sortedMovies.length > 5 ? (
+      {sliderConditions ? (
         <S.SlideContent>
           <Splide
             aria-label="Favorite Movies"
@@ -62,6 +71,7 @@ export default function MoviesList({
               perPage: 5,
               perMove: 1,
               arrows: true,
+              rewind: true,
               breakpoints: {
                 767: {
                   perPage: 2,
@@ -82,11 +92,9 @@ export default function MoviesList({
       ) : sortedMovies.length > 0 ? (
         <S.Content>
           {sortedMovies.map((movie: Movie) => (
-            <>
-              <li onClick={() => handleClick(movie)}>
-                <MovieItem key={movie.id} movie={movie} />
-              </li>
-            </>
+            <li key={movie.id} onClick={() => handleClick(movie)}>
+              <MovieItem movie={movie} />
+            </li>
           ))}
         </S.Content>
       ) : (

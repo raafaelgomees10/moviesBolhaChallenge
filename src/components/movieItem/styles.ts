@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  transition: 0.3s;
   cursor: pointer;
+  transition: 0.3s;
   &:hover {
     transform: scale(1.07);
   }
@@ -22,6 +22,11 @@ export const Image = styled.img`
   @media (max-width: 767px) {
     height: 230px;
     width: 150px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    height: 280px;
+    width: 180px;
   }
 `;
 

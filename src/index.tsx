@@ -12,12 +12,10 @@ const root = ReactDOM.createRoot(rootElement);
 const isDarkMode = true;
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-        <GlobalStyles />
-        <App />
-      </ThemeProvider>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <GlobalStyles />
+      <App />
+    </ThemeProvider>
+  </Provider>
 );

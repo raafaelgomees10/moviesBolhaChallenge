@@ -99,11 +99,18 @@ export const Content = styled.ul`
 
   @media (max-width: 767px) {
     grid-template-columns: 1fr 1fr;
+    padding: 16px 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 16px 0;
   }
 `;
 
 export const NoResults = styled.p`
   font-size: 1.6rem;
+  padding: 8px 16px;
 
   @media (max-width: 767px) {
     font-size: 1.4rem;
