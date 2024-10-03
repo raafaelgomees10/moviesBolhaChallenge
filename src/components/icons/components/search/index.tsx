@@ -3,7 +3,6 @@ import { IconProps } from "../../../../types/icons";
 const Search = ({ height, width }: IconProps) => {
   return (
     <svg
-      fill="#fff"
       height={height}
       width={width}
       version="1.1"

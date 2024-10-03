@@ -39,16 +39,37 @@ ul, li, p, h1, h2,h3{
   padding-top: 110px;
 }
 
-.movies-listSearched {
-  display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 15px;
+svg{
+  fill: ${(props) => props.theme.colors.primary};
 }
 
+.icon{
+  > svg {
+    cursor: pointer;
+    transition: fill 0.2s;
+
+    &:hover {
+      fill: ${(props) => props.theme.colors.secondary};
+    }
+  } 
+}
 .toggleTheme{
   background-color: transparent;
   border: none;
+  padding: 0;
+}
+
+.iconTheme{
+
+  fill: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.primary};
+
+
+  transition: stroke .2s, fill 0.2s;
+    &:hover {
+      fill: ${(props) => props.theme.colors.secondary};
+      stroke: ${(props) => props.theme.colors.secondary};
+    }
 }
 
 `;

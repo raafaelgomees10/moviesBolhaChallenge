@@ -16,7 +16,7 @@ export const SearchBox = styled.div<SearchInputProps>`
   ${(props) =>
     props.$isExpanded &&
     css`
-      border: 1px solid #fff;
+      border: 1px solid ${(props) => props.theme.colors.primary};
       cursor: unset;
     `}
 `;
@@ -31,11 +31,6 @@ export const SearchButton = styled.div<SearchInputProps>`
   width: 32px;
 
   > svg {
-    transition: fill 0.2s;
-
-    &:hover {
-      fill: ${(props) => props.theme.colors.secondary};
-    }
     ${(props) =>
       props.$isExpanded &&
       css`
@@ -47,7 +42,7 @@ export const SearchButton = styled.div<SearchInputProps>`
 export const SearchInput = styled.input<SearchInputProps>`
   background: none;
   border: none;
-  color: #fff;
+  color: ${(props) => props.theme.colors.primary};
   font-size: 1.4rem;
   font-weight: 300;
   outline: none;

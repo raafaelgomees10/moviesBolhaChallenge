@@ -3,6 +3,7 @@ import * as S from "./styles";
 import SearchBar from "../search";
 import Icon from "../icons";
 import useMedia from "../../hooks/useMedia";
+import ThemeSwitcher from "../themeSwitcher";
 
 interface HeaderProps {
   onSearchChange: (text: string) => void;
@@ -38,19 +39,22 @@ const Header = ({ onSearchChange }: HeaderProps) => {
             </S.ListItem>
             {!mobile && (
               <>
-                <S.ListItem>
+                <S.ListItem className="icon">
                   <Icon
                     icon="notification"
                     width={mobile ? 20 : 26}
                     height={mobile ? 20 : 26}
                   />
                 </S.ListItem>
-                <S.ListItem>
+                <S.ListItem className="icon">
                   <Icon
                     icon="profile"
                     width={mobile ? 18 : 24}
                     height={mobile ? 18 : 24}
                   />
+                </S.ListItem>
+                <S.ListItem className="icon">
+                  <ThemeSwitcher />
                 </S.ListItem>
               </>
             )}
@@ -58,6 +62,8 @@ const Header = ({ onSearchChange }: HeaderProps) => {
         </S.Navbar>
         {mobile && (
           <S.MobileWrapper>
+            <ThemeSwitcher />
+
             <Icon
               icon="notification"
               width={mobile ? 20 : 26}

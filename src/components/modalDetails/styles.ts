@@ -98,7 +98,8 @@ export const Details = styled.div`
 
 export const MovieTitle = styled.h2`
   font-size: 2.6rem;
-  line-height: 1.4;
+  line-height: 1.1;
+  max-width: 470px;
   margin: 16px 0;
   text-align: center;
 

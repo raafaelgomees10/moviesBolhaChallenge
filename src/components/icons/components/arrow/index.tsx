@@ -3,7 +3,6 @@ import { IconProps } from "../../../../types/icons";
 const Arrow = ({ height, width }: IconProps) => {
   return (
     <svg
-      fill="#FFF"
       width={width}
       version="1.1"
       height={height}

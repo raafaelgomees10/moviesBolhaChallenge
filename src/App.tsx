@@ -1,62 +1,24 @@
-import { useState } from "react";
-import { Movie } from "./types/movie";
-import Header from "./components/header";
-import Toggle from "./components/toggle";
-import movies from "./data/popular.json";
-import Filters from "./components/filters";
-import upcoming from "./data/upcoming.json";
-import topRated from "./data/top-rated.json";
-import MoviesList from "./components/movieList";
-import nowPlaying from "./data/now-playing.json";
+import { useEffect } from "react";
+import Content from "./components/content";
+import { ThemeProvider } from "styled-components";
+import { RootState } from "./store/configureStore";
+import { setInitialTheme } from "./store/themeSlice";
+import { GlobalStyles } from "./styles/globalStyles";
+import { darkTheme, lightTheme } from "./styles/theme";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function App() {
-  const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
-  const [searchText, setSearchText] = useState<string>("");
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
-  const handleGenreChange = (genres: number[]) => {
-    setSelectedGenres(genres);
-  };
-
-  const handleSearchChange = (text: string) => {
-    setSearchText(text);
-  };
-
-  const filterMovies = (movies: Movie[]) => {
-    return movies.filter((movie) =>
-      movie.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-  };
+  useEffect(() => {
+    dispatch(setInitialTheme());
+  }, [dispatch]);
 
   return (
-    <div className="mainContainer">
-      <Header onSearchChange={handleSearchChange} />
-
-      <div className="mainContent">
-        <Toggle colorOne="#FF6B00" colorTwo="#868686" />
-        <Filters onGenreChange={handleGenreChange} />
-        <div>
-          <MoviesList
-            title="Popular"
-            movies={filterMovies(movies as Movie[])}
-            selectedGenres={selectedGenres}
-          />
-          <MoviesList
-            title="Keep watching"
-            movies={filterMovies(nowPlaying) as Movie[]}
-            selectedGenres={selectedGenres}
-          />
-          <MoviesList
-            title="Top Rated"
-            movies={filterMovies(topRated) as Movie[]}
-            selectedGenres={selectedGenres}
-          />
-          <MoviesList
-            title="Coming Soon"
-            movies={filterMovies(upcoming) as Movie[]}
-            selectedGenres={selectedGenres}
-          />
-        </div>
-      </div>
-    </div>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <GlobalStyles />
+      <Content />
+    </ThemeProvider>
   );
 }

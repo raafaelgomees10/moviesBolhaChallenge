@@ -6,7 +6,7 @@ interface HamburgerIconProps {
 
 export const Container = styled.div`
   align-items: center;
-  background: #131518;
+  background: ${(props) => props.theme.header};
   border-bottom: 1px solid rgba(255, 107, 0, 0.5);
   box-shadow: 0 2px 5px rgba(255, 107, 0, 0.4);
   display: flex;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   z-index: 999;
 
   &.menuActive {
-    border-bottom: 1px solid #131518;
+    border-bottom: 1px solid ${(props) => props.theme.header};
     box-shadow: unset;
   }
 `;
@@ -34,19 +34,10 @@ export const Content = styled.div`
 export const ListItem = styled.li`
   align-self: center;
   margin: 0;
-  padding: 0 12px;
+  padding: 0 8px;
 
   @media (max-width: 767px) {
     padding: 12px 0;
-  }
-
-  > svg {
-    cursor: pointer;
-    transition: fill 0.2s;
-
-    &:hover {
-      fill: ${(props) => props.theme.colors.secondary};
-    }
   }
 
   > span {
@@ -92,7 +83,7 @@ export const MainMenu = styled.ul`
 
   @media (max-width: 767px) {
     align-items: center;
-    background: #131518;
+    background: ${(props) => props.theme.header};
     border-bottom: 1px solid rgba(255, 107, 0, 0.5);
     box-shadow: 0 2px 5px rgba(255, 107, 0, 0.3);
     flex-direction: column;
@@ -120,7 +111,7 @@ export const MenuBtn = styled.div<HamburgerIconProps>`
     cursor: pointer;
 
     span {
-      background: white;
+      background: ${(props) => props.theme.colors.primary};
       display: block;
       height: 2px;
       margin: 3px 0;
@@ -155,7 +146,8 @@ export const MobileWrapper = styled.div`
   align-items: center;
   display: flex;
 
-  > svg {
+  > svg,
+  button {
     margin-right: 16px;
   }
 `;
