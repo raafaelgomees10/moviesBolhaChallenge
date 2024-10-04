@@ -73,7 +73,6 @@ export const Logo = styled.div`
     font-size: 4rem;
   }
 `;
-
 export const MainMenu = styled.ul`
   display: flex;
 
@@ -84,19 +83,23 @@ export const MainMenu = styled.ul`
   @media (max-width: 767px) {
     align-items: center;
     background: ${(props) => props.theme.header};
-    border-bottom: 1px solid rgba(255, 107, 0, 0.5);
+    border-bottom: 2px solid #ff6b00;
     box-shadow: 0 2px 5px rgba(255, 107, 0, 0.3);
     flex-direction: column;
     left: 0;
-    opacity: 0;
     position: absolute;
     top: 93px;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
     transform: translateY(-30px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
     width: 100%;
 
     &.menuActive {
       opacity: 1;
+      visibility: visible;
+      max-height: 500px; /* Defina um valor que seja suficiente para o menu */
       transform: translateY(0);
     }
   }

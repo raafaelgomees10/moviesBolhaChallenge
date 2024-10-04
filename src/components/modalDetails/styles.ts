@@ -147,6 +147,7 @@ export const Text = styled.p`
 
   @media (max-width: 767px) {
     font-size: 1.2rem;
+    max-width: 150px;
   }
 `;
 

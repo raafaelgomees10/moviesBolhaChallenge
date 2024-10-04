@@ -8,12 +8,26 @@ export const GlobalStyles = createGlobalStyle`
 	font-size: 62.5%;
 	list-style: none;
   text-decoration: none;
+
+  ::-webkit-scrollbar {
+	  width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+	  background-color: ${(props) => props.theme.bg};
+  }
+
+  ::-webkit-scrollbar-thumb {
+	  background-color: ${(props) => props.theme.colors.secondary};
+	  border-radius: 4px;
+  }
 }
 
 html, body{
   background: ${(props) => props.theme.bg};
   margin: 0;
   padding:0;
+  overflow-x: hidden;
 }
 
 ul, li, p, h1, h2,h3{
